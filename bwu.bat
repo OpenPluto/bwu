@@ -4,6 +4,7 @@ echo BetterWindows 11
 echo made by OpenPluto
 echo .gg/uVv9cPuu6U
 echo t.me/+OVOCKcjp9qVjOGZh
+pause
 bcdedit /deletevalue loadoptions >nul 2>&1
 bcdedit /set allowedinmemorysettings 0x15000075 >nul 2>&1
 bcdedit /set isolatedcontext yes >nul 2>&1
@@ -220,4 +221,5 @@ goto end
 :end
 cls
 echo All tweaks applied.
+
 Pause
