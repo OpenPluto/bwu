@@ -8,7 +8,7 @@ echo t.me/+OVOCKcjp9qVjOGZh
 pause
 cls
 echo Apply Windows Tweaks? (From XNET's Free Utility)
-echo {1] Yes
+echo [1] Yes
 echo [2] No
 set /p input=
 if /i %input% == 1 goto tweaks
@@ -219,3 +219,4 @@ if /i %input% == 2 goto skipmas
 powershell.exe iex (curl.exe -s --doh-url https://1.1.1.1/dns-query https://get.activated.win | Out-String)
 :skipmas
 pause
+
