@@ -1,10 +1,19 @@
 @echo off
+color 03
 cls
-echo BetterWindows 11
+echo Better Windows Utility
 echo made by OpenPluto
 echo .gg/uVv9cPuu6U
 echo t.me/+OVOCKcjp9qVjOGZh
 pause
+cls
+echo Apply Windows Tweaks? (From XNET's Free Utility)
+echo {1] Yes
+echo [2] No
+set /p input=
+if /i %input% == 1 goto tweaks
+if /i %input% == 2 goto skiptweaks
+:tweaks
 bcdedit /deletevalue loadoptions >nul 2>&1
 bcdedit /set allowedinmemorysettings 0x15000075 >nul 2>&1
 bcdedit /set isolatedcontext yes >nul 2>&1
@@ -198,28 +207,15 @@ Reg.exe add "HKLM\SYSTEM\ControlSet001\Control\Session Manager\kernel" /v "Disab
 Reg.exe add "HKLM\SYSTEM\ControlSet001\Control\Session Manager\kernel" /v "KernelSEHOPEnabled" /t REG_DWORD /d "0" /f
 Reg.exe add "HKLM\SYSTEM\ControlSet002\Control\Session Manager\kernel" /v "DisableExceptionChainValidation" /t REG_DWORD /d "1" /f
 Reg.exe add "HKLM\SYSTEM\ControlSet002\Control\Session Manager\kernel" /v "KernelSEHOPEnabled" /t REG_DWORD /d "0" /f
-start powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-powershell.exe choco install systeminformer
+:skiptweaks
 cls
-powershell.exe choco install obs
-cls
-powershell.exe choco install python3
-cls
-powershell.exe choco install python
-cls
-powershell.exe choco install sysinternals
-cls
-echo Better Windows Has Been Applied, do you want to activate windows via MAS (Microsoft Activation Scripts)
-echo [y/n]
+echo Would you like to activate microsoft services?
+echo [1] Yes
+echo [2] No
 set /p input=
-if /i %input% == y goto mas
-if /i %input% == n goto end
+if /i %input% == 1 goto mas
+if /i %input% == 2 goto skipmas
 :mas
-cls
 powershell.exe iex (curl.exe -s --doh-url https://1.1.1.1/dns-query https://get.activated.win | Out-String)
-goto end
-:end
-cls
-echo All tweaks applied.
-
-Pause
+:skipmas
+pause
